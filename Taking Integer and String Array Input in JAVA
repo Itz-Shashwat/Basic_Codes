@@ -1,7 +1,7 @@
 // This Code is given by Shashwat Sharma
 import java.util.Scanner;
 class array{
-// The line below declares a static input 
+// The line below declares a static Variable 
     static int limit;
 
 // The block below is a constructor, i declared it to take limit input
