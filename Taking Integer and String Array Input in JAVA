@@ -1,0 +1,64 @@
+// This Code is given by Shashwat Sharma
+import java.util.Scanner;
+class array{
+// The line below declares a static input 
+    static int limit;
+
+// The block below is a constructor, i declared it to take limit input
+    array(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter limit");
+        limit=sc.nextInt();
+    }
+
+
+// This block is for int array input 
+    void arr_in(){
+        Scanner sc=new Scanner(System.in);
+// The line below declares variable for array which is actully a class
+        int[] ar= new int[limit];
+// The for loop below will take input from user one by one and will store in array
+        for (int i=0;i<limit;i++){
+            ar[i]=sc.nextInt();
+        }
+        System.out.println("Values in array are:");
+// The for loop below is to print array elements 
+        for(int j=0;j<limit;j++){
+            System.out.print(","+ar[j]);
+        }
+    }
+
+
+// The method below is a static method
+// This block is for string array input
+    static void arr_str(){
+        Scanner sc=new Scanner(System.in);
+// The line below declares variable for array which is actully a class
+        String[] st=new String[limit];
+// The for loop below will take input from user one by one and will store in array
+        for (int i=0;i<limit;i++){
+            st[i]=sc.nextLine();
+        }
+        System.out.println("Elements in array are:");
+// The for loop below is to print array elements 
+        for(int j=0;j<limit;j++){
+            System.out.print(","+ st[j]);
+        }
+
+    }
+    
+}
+
+
+// Driver Class
+class Array_input{
+    public static void main(String[] args){
+// The line below declares object for array class
+        array meth=new array();
+// The line below is calling arr_in method using object 
+        meth.arr_in();
+// The line below is calling arr_str method directly using class name because that method is static method
+        array.arr_str();
+        
+    }
+}
