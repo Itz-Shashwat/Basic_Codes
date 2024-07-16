@@ -1,0 +1,115 @@
+import java.util.*;
+
+class Stacking {
+    int arr[] = new int[1000];
+    int st1limit, st2limit;
+    int top1, top2;
+
+    Stacking() {
+        this.top1 = -1;
+        this.top2 = 1000; 
+    }
+
+    void stack1(int ele, int size) {
+        this.st1limit = size - 1;
+        if (!isFull1()) {
+            top1 += 1;
+            arr[top1] = ele;
+        } else {
+            System.out.println("Stack 1 overflow");
+        }
+    }
+
+    void stack2(int ele, int size) {
+        this.st2limit = 1000 - size; 
+        if (!isFull2()) {
+            top2 -= 1;
+            arr[top2] = ele;
+        } else {
+            System.out.println("Stack 2 overflow");
+        }
+    }
+
+    void pop1(int count) {
+        if (count <= top1 + 1) {
+            for (int i = 0; i < count; i++) {
+                top1--;
+            }
+        } else {
+            System.out.println("Stack underflow. pop from stack 1 failed");
+          	top1-=count;
+        }
+    }
+
+    void pop2(int count) {
+        if (count <= 1000 - top2) {
+            for (int i = 0; i < count; i++) {
+                top2++;
+            }
+        } else {
+            System.out.println("Stack underflow. pop from stack 2 failed");
+			top2-=count;
+        }
+    }
+
+    boolean isFull1() {
+        return top1 == st1limit;
+    }
+
+    boolean isFull2() {
+        return top2 == st2limit;
+    }
+
+    void displayStack1() {
+        for (int i = top1; i >= 0; i--) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+    void displayStack2() {
+        for (int i = top2; i < 1000; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Stacking st = new Stacking();
+
+        int limit1 = sc.nextInt();
+        for (int i = 0; i < limit1; i++) {
+            int temp = sc.nextInt();
+            st.stack1(temp, limit1);
+        }
+
+        int limit2 = sc.nextInt();
+        for (int i = 0; i < limit2; i++) {
+            int temp = sc.nextInt();
+            st.stack2(temp, limit2);
+        }
+
+        System.out.println("Stack 1 Elements:");
+        st.displayStack1();
+
+        System.out.println("Stack 2 Elements:");
+        st.displayStack2();
+
+        int remove1 = sc.nextInt();
+        int remove2 = sc.nextInt();
+
+        st.pop1(remove1);
+        st.pop2(remove2);
+
+        System.out.println("Stack 1 Elements:");
+        st.displayStack1();
+
+        System.out.println("Stack 2 Elements:");
+        st.displayStack2();
+
+        sc.close();
+    }
+}
